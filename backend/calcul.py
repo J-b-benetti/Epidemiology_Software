@@ -80,7 +80,7 @@ def test_hypothese():
         return "L'hypothèse de départ H0 n'est pas rejetée. E et D sont indépendants", calcul
 
 
-def nu(): ## Retourne pas tout à fait le résultat
+def nu(): ## Retourne pas tout à fait le résultat. A revoir
     calcul = log(odd_ratio()) / log(2)
     return round(calcul, 2)
 
