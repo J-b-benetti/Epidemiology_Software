@@ -86,7 +86,7 @@ def test_hypothese_d_e():
     calcul = abs((r1() - r0()) / sqrt(var_r1_r0()))
     if calcul > 2.58:
         return "L'hypothèse de départ H0 est rejetée. E et D ne sont pas indépendant sur l'intervalle de confiance de " \
-               "98 % ", calcul
+               "95 et 98 % ", calcul
     elif calcul > 1.96:
         return "L'hypothèse de départ H0 est rejetée. E et D ne sont pas indépendant sur l'intervalle de confiance de " \
                "95 % ", calcul
@@ -125,14 +125,16 @@ def intervalle_confiance_d_e():
 
 def intervalle_confiance_e_d():
     val_min = exp(nu_e_d() - 1.96*sqrt(var_nu_e_d()))
-    val_max = exp(nu_d_e() + 1.96*sqrt(var_nu_e_d()))
+    val_max = exp(nu_e_d() + 1.96*sqrt(var_nu_e_d()))
     return [round(val_min, 2), round(val_max, 2)]
 
 print("X0,0: ", x00, "X0,1: ", x01, "X1,0: ", x10, "X1,1: ", x11)
+print()
 print("n0: ", n0(), "n1: ", n1(), "m0: ", m0(), "m1: ", m1())
 print("Total: ", total())
 
 print("R0: ", r0(), "R1: ", r1())
+print()
 print("R: ", r())
 
 print("Odd Ratio D/E: ", odd_ratio_d_e())
@@ -146,8 +148,8 @@ print("-------------------------------")
 print("F0: ", f0(), "F1: ", f1())
 print("F: ", f())
 
-print("Odd Ratio E/D: ", odd_ratio_d_e())
-print("Hypothèse: ", test_hypothese_d_e())
-print("Nu E/D: ", nu_d_e())
-print("Var(nu E/D): ", var_nu_d_e())
-print("IC(1 - alpha) (E/D): ", intervalle_confiance_d_e())
+print("Odd Ratio E/D: ", odd_ratio_e_d())
+print("Hypothèse: ", test_hypothese_e_d())
+print("Nu E/D: ", nu_e_d())
+print("Var(nu E/D): ", var_nu_e_d())
+print("IC(1 - alpha) (E/D): ", intervalle_confiance_e_d())
