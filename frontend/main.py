@@ -64,8 +64,8 @@ for i, row_label in enumerate(row_labels):
     entry_fields.append(row)
 
 # Bouton pour récupérer les valeurs
-submit_button = tk.Button(root, text="Obtenir les valeurs", font=font.Font(size=12), command=get_values)
-submit_button.grid(row=5, columnspan=4)
+submit_button = tk.Button(root, text="Obtenir les valeurs", font=font.Font(size=12), bg='grey', border=3, relief=tk.GROOVE, command=get_values)
+submit_button.grid(row=10, columnspan=4)
 
 label_row_sums = [tk.Label(root, text='', font=font.Font(size=12), fg='blue') for _ in range(2)]
 for i, label in enumerate(label_row_sums):
