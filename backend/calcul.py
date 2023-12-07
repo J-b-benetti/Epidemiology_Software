@@ -128,11 +128,12 @@ def intervalle_confiance_e_d():
     val_max = exp(nu_e_d() + 1.96*sqrt(var_nu_e_d()))
     return [round(val_min, 2), round(val_max, 2)]
 
-print("X0,0: ", x00, "X0,1: ", x01, "X1,0: ", x10, "X1,1: ", x11)
+'''
+print("X0,0: ", x00, "\nX0,1: ", x01, "\nX1,0: ", x10, "\nX1,1: ", x11)
 print()
-print("n0: ", n0(), "n1: ", n1(), "m0: ", m0(), "m1: ", m1())
+print("n0: ", n0(), "\nn1: ", n1(), "\nm0: ", m0(), "\nm1: ", m1())
 print("Total: ", total())
-
+print()
 print("R0: ", r0(), "R1: ", r1())
 print()
 print("R: ", r())
@@ -153,3 +154,4 @@ print("Hypothèse: ", test_hypothese_e_d())
 print("Nu E/D: ", nu_e_d())
 print("Var(nu E/D): ", var_nu_e_d())
 print("IC(1 - alpha) (E/D): ", intervalle_confiance_e_d())
+'''
