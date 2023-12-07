@@ -53,10 +53,8 @@ def total(n0, n1):
 def r0(x01, somme_n0):
     return round(x01 / somme_n0, 2)
 
-
 def r1(x11, somme_n1):
     return round(x11 / somme_n1, 2)
-
 
 def r(somme_m1, total):
     return round(somme_m1 / total, 2)
@@ -71,20 +69,23 @@ def f1(x11, somme_m1):
 def f(somme_n1, total):
     return round(somme_n1 / total, 2)
 
-'''def odd_ratio_d_e():
+
+
+def odd_ratio_d_e(x00, x11, x10, x01):
     return round((x00 * x11) / (x10 * x01), 2)
 
-def odd_ratio_e_d():
+def odd_ratio_e_d(x00, x11, x10, x01):
     return round((x00 * x11) / (x10 * x01), 2)
 
-def var_r1_r0():
-    calcul = r() * (1 - r()) * (1 / n0() + 1 / n1())
+def var_r1_r0(r, somme_n0, somme_n1):
+    calcul = r * (1 - r) * (1 / somme_n0 + 1 / somme_n1)
     return calcul
 
-def var_f1_f0():
-    calcul = f() * (1 - f()) * (1 / m0() + 1 / m1())
+def var_f1_f0(f, somme_m0, somme_m1):
+    calcul = f * (1 - f) * (1 / somme_m0 + 1 / somme_m1)
     return calcul
 
+'''
 def test_hypothese_d_e():
     calcul = abs((r1() - r0()) / sqrt(var_r1_r0()))
     if calcul > 2.58:
