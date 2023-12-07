@@ -1,5 +1,5 @@
 import tkinter as tk
-from backend import calcul
+import calcul as backend
 
 def get_values():
     values = [] # Tableau contenant les valeurs
@@ -14,7 +14,26 @@ def get_values():
                 # Si l'entrée n'est pas un nombre entier, ajouter 0 par défaut
                 row.append(0)
         values.append(row)
-    print("Valeurs saisies :", values)
+    #print("Valeurs saisies :", values)
+
+    sum_rows = [sum(row) for row in values]
+    sum_columns = [sum(col) for col in zip(*values)]  # Utilisation de zip pour obtenir les colonnes
+
+    # Calcul des sommes selon les méthodes définies dans le module backend
+    sum_n0 = backend.n0(*values[0])
+    sum_n1 = backend.n1(*values[1])
+    sum_m0 = backend.m0(values[0][0], values[1][0])
+    sum_m1 = backend.m1(values[0][1], values[1][1])
+    total = backend.total(sum_n0, sum_n1)
+
+     # Affichage des sommes des lignes et des colonnes dans les labels correspondants
+    for i, sum_row in enumerate(sum_rows):
+        label_row_sums[i]['text'] = f"{sum_row}"
+    
+    for j, sum_col in enumerate(sum_columns):
+        label_col_sums[j]['text'] = f"{sum_col}"
+
+    label_total['text'] = f"{total}"
 
 root = tk.Tk()
 root.title("Epidemiology Software")
@@ -43,6 +62,18 @@ for i, row_label in enumerate(row_labels):
 
 # Bouton pour récupérer les valeurs
 submit_button = tk.Button(root, text="Obtenir les valeurs", command=get_values)
-submit_button.grid(row=4, columnspan=3)
+submit_button.grid(row=10, columnspan=3)
+
+label_row_sums = [tk.Label(root, text='') for _ in range(2)]
+for i, label in enumerate(label_row_sums):
+    label.grid(row=i+2, column=3)
+
+label_col_sums = [tk.Label(root, text='') for _ in range(2)]
+for j, label in enumerate(label_col_sums):
+    label.grid(row=4, column=j+1)
+
+label_total = tk.Label(root, text='')
+label_total.grid(row=4, column=3)
+
 
 root.mainloop()
