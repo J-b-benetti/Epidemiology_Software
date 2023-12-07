@@ -50,26 +50,26 @@ def m1(x01, x11):
 def total(n0, n1):
     return n0 + n1
 
-def r0(x01):
-    return round(x01 / n0(), 2)
+def r0(x01, somme_n0):
+    return round(x01 / somme_n0, 2)
 
 
-def r1(x11):
-    return round(x11 / n1(), 2)
+def r1(x11, somme_n1):
+    return round(x11 / somme_n1, 2)
 
 
-def r():
-    return round(m1() / total(), 2)
+def r(somme_m1, total):
+    return round(somme_m1 / total, 2)
 
 
-def f0(x10):
-    return round(x10 / m0(), 2)
+def f0(x10, somme_m0):
+    return round(x10 / somme_m0, 2)
 
-def f1(x11):
-    return round(x11 / m1(), 2)
+def f1(x11, somme_m1):
+    return round(x11 / somme_m1, 2)
 
-def f():
-    return round(n1() / total(), 2)
+def f(somme_n1, total):
+    return round(somme_n1 / total, 2)
 
 '''def odd_ratio_d_e():
     return round((x00 * x11) / (x10 * x01), 2)

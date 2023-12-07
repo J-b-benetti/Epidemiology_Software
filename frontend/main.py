@@ -37,7 +37,7 @@ def get_values():
 
 root = tk.Tk()
 root.title("Epidemiology Software")
-root.geometry("500x300")
+root.geometry("600x400")
 
 entry_fields = []
 
@@ -64,16 +64,16 @@ for i, row_label in enumerate(row_labels):
 submit_button = tk.Button(root, text="Obtenir les valeurs", command=get_values)
 submit_button.grid(row=10, columnspan=3)
 
-label_row_sums = [tk.Label(root, text='') for _ in range(2)]
+label_row_sums = [tk.Label(root, text='', fg='blue') for _ in range(2)]
 for i, label in enumerate(label_row_sums):
     label.grid(row=i+2, column=3)
 
-label_col_sums = [tk.Label(root, text='') for _ in range(2)]
+label_col_sums = [tk.Label(root, text='', fg='blue') for _ in range(2)]
 for j, label in enumerate(label_col_sums):
     label.grid(row=4, column=j+1)
 
-label_total = tk.Label(root, text='')
+label_total = tk.Label(root, text='', fg='red')
 label_total.grid(row=4, column=3)
 
 
-root.mainloop()
+root.mainloop() # On démarre le programme
