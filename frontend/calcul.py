@@ -77,6 +77,8 @@ def odd_ratio_d_e(x00, x11, x10, x01):
 def odd_ratio_e_d(x00, x11, x10, x01):
     return round((x00 * x11) / (x10 * x01), 2)
 
+
+
 def var_r1_r0(r, somme_n0, somme_n1):
     calcul = r * (1 - r) * (1 / somme_n0 + 1 / somme_n1)
     return calcul
@@ -85,9 +87,9 @@ def var_f1_f0(f, somme_m0, somme_m1):
     calcul = f * (1 - f) * (1 / somme_m0 + 1 / somme_m1)
     return calcul
 
-'''
-def test_hypothese_d_e():
-    calcul = abs((r1() - r0()) / sqrt(var_r1_r0()))
+
+def test_hypothese_d_e(r0, r1, res_var_r1_ro):
+    calcul = abs((r1() - r0()) / sqrt(res_var_r1_ro))
     if calcul > 2.58:
         return "L'hypothèse de départ H0 est rejetée. E et D ne sont pas indépendant sur l'intervalle de confiance de " \
                "95 et 98 % ", calcul
@@ -97,6 +99,7 @@ def test_hypothese_d_e():
     else:
         return "L'hypothèse de départ H0 n'est pas rejetée. E et D sont indépendants", calcul
 
+'''
 def test_hypothese_e_d():
     calcul = abs((f1() - f0()) / sqrt(var_f1_f0()))
     if calcul > 2.58:
