@@ -31,7 +31,12 @@ def get_values():
     update_entry(r1_entry, backend.r1(values[1][1], sum_rows[1]))
     update_entry(odd_ratio_d_e_entry, backend.odd_ratio_d_e(values[0][0], values[1][1], values[1][0], values[0][1]))
     update_entry(r_entry, backend.r(backend.m1(values[0][1], sum_rows[0]), sum_rows[0]))
-    
+
+    update_label(hypothese_label, backend.test_hypothese_d_e(values[1][1], values[0][1], sum_n0, sum_n1, sum_m1, total))
+
+    update_entry(nu_entry, backend.nu_d_e(values[0][0], values[1][1], values[1][0], values[0][1]))
+    update_entry(var_nu_entry, backend.var_nu_d_e(values[0][0], values[0][1], values[1][0], values[1][1]))
+    update_entry(intervalle_confiance_d_e_entry, backend.intervalle_confiance_d_e(values[0][0], values[1][1], values[1][0], values[0][1]))
 
     # Affichage des sommes des lignes et des colonnes dans les labels correspondants
     for i, sum_row in enumerate(sum_rows):
@@ -47,12 +52,13 @@ def update_entry(entry_widget, value):
     entry_widget.delete(0, tk.END)
     entry_widget.insert(0, value)
 
+def update_label(label_widget, text):
+    label_widget.config(text=text)
 
 root = tk.Tk()
 root.title("Epidemiology Software")
 root.geometry("800x600")
 root.resizable(False, True) #Redimensionnement de la fenêtre
-#root.eval('tk::PlaceWindow . center')
 
 entry_fields = []
 
@@ -116,8 +122,24 @@ r_label.grid(row=18, columnspan=2)
 r_entry = tk.Entry(root, font=font.Font(size=12))
 r_entry.grid(row=19, columnspan=2)
 
-hypothese_label = tk.Label(root, text='', font=font.Font(size=12), fg='black')
+hypothese_label = tk.Label(root, text='Hypothèse :', font=font.Font(size=12), fg='black')
 hypothese_label.grid(row=20, columnspan=2)
+hypothese_entry = tk.Label(root, text='', font=font.Font(size=12), fg='black', wraplength=10)
+hypothese_entry.grid(row=21, columnspan=2)
 
+nu_label = tk.Label(root, text='Nu', font=font.Font(size=12), fg='black')
+nu_label.grid(row=22, columnspan=2)
+nu_entry = tk.Entry(root, font=font.Font(size=12))
+nu_entry.grid(row=23, columnspan=2)
+
+var_nu_label = tk.Label(root, text='Var_Nu', font=font.Font(size=12), fg='black')
+var_nu_label.grid(row=24, columnspan=2)
+var_nu_entry = tk.Entry(root, font=font.Font(size=12))
+var_nu_entry.grid(row=25, columnspan=2)
+
+intervalle_confiance_d_e_label = tk.Label(root, text='Intervalle de confiance (IC)', font=font.Font(size=12), fg='black')
+intervalle_confiance_d_e_label.grid(row=26, columnspan=2)
+intervalle_confiance_d_e_entry = tk.Entry(root, font=font.Font(size=12))
+intervalle_confiance_d_e_entry.grid(row=27, columnspan=2)
 
 root.mainloop() # On démarre le programme

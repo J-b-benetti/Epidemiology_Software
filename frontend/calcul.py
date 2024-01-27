@@ -22,30 +22,14 @@ from math import *
 def n0(x00, x01):
     return x00 + x01
 
-
 def n1(x10, x11):
     return x10 + x11
-
 
 def m0(x00, x10):
     return x00 + x10
 
-
 def m1(x01, x11):
     return x01 + x11
-
-
-'''def total():
-    try:
-        first_calc = n0() + n1()
-        second_calc = m0() + m1()
-        if first_calc != second_calc:
-            raise ValueError("Le total n'est pas le bon.")
-        else:
-            return x00 + x01 + x10 + x11
-    except ValueError as e:
-        return str(e)
-'''
 
 def total(n0, n1):
     return n0 + n1
@@ -59,7 +43,6 @@ def r1(x11, somme_n1):
 def r(somme_m1, total):
     return round(somme_m1 / total, 2)
 
-
 def f0(x10, somme_m0):
     return round(x10 / somme_m0, 2)
 
@@ -69,15 +52,11 @@ def f1(x11, somme_m1):
 def f(somme_n1, total):
     return round(somme_n1 / total, 2)
 
-
-
 def odd_ratio_d_e(x00, x11, x10, x01):
     return round((x00 * x11) / (x10 * x01), 2)
 
 def odd_ratio_e_d(x00, x11, x10, x01):
     return round((x00 * x11) / (x10 * x01), 2)
-
-
 
 def var_r1_r0(r, somme_n0, somme_n1):
     calcul = r * (1 - r) * (1 / somme_n0 + 1 / somme_n1)
@@ -87,18 +66,29 @@ def var_f1_f0(f, somme_m0, somme_m1):
     calcul = f * (1 - f) * (1 / somme_m0 + 1 / somme_m1)
     return calcul
 
-
-def test_hypothese_d_e(r0, r1, res_var_r1_ro):
-    calcul = abs((r1() - r0()) / sqrt(res_var_r1_ro))
+def test_hypothese_d_e(x11, x01, somme_n0, somme_n1, somme_m1, total):
+    calcul = abs((r1(x11, somme_n1) - r0(x01, somme_n0)) / sqrt(var_r1_r0(r(somme_m1, total), somme_n0, somme_n1)))
     if calcul > 2.58:
-        return "L'hypothèse de départ H0 est rejetée. E et D ne sont pas indépendant sur l'intervalle de confiance de " \
-               "95 et 98 % ", calcul
+        return "L'hypothèse de départ H0 est rejetée.\nE et D ne sont pas indépendant\nsur l'intervalle de confiance de " \
+               "95 et 98 %\n", calcul
     elif calcul > 1.96:
-        return "L'hypothèse de départ H0 est rejetée. E et D ne sont pas indépendant sur l'intervalle de confiance de " \
-               "95 % ", calcul
+        return "L'hypothèse de départ H0 est rejetée.\nE et D ne sont pas indépendant\nsur l'intervalle de confiance de " \
+               "95 %\n", calcul
     else:
-        return "L'hypothèse de départ H0 n'est pas rejetée. E et D sont indépendants", calcul
+        return "L'hypothèse de départ H0 n'est pas rejetée.\nE et D sont indépendants\n", calcul
 
+def nu_d_e(x00, x11, x10, x01):
+    odd_ratio = odd_ratio_d_e(x00, x11, x10, x01)
+    calcul = log(odd_ratio)
+    return round(calcul, 2)
+
+def var_nu_d_e(x00, x01, x10, x11):
+    return round((1 / x00) + (1 / x01) + (1 / x10) + (1 / x11), 2)
+
+def intervalle_confiance_d_e(x00, x11, x10, x01):
+    val_min = exp(nu_d_e(x00, x11, x10, x01) - 1.96*sqrt(var_nu_d_e(x00, x11, x10, x01)))
+    val_max = exp(nu_d_e(x00, x11, x10, x01) + 1.96*sqrt(var_nu_d_e(x00, x01, x10, x11)))
+    return [round(val_min, 2), round(val_max, 2)]
 '''
 def test_hypothese_e_d():
     calcul = abs((f1() - f0()) / sqrt(var_f1_f0()))
@@ -110,32 +100,28 @@ def test_hypothese_e_d():
                "95 % ", calcul
     else:
         return "L'hypothèse de départ H0 n'est pas rejetée. E et D sont indépendants", calcul
-
-def nu_d_e():
-    calcul = log(odd_ratio_d_e())
-    return round(calcul, 2)
-
+'''
+'''
 def nu_e_d():
     calcul = log(odd_ratio_e_d())
     return round(calcul, 2)
+'''
 
-def var_nu_d_e():
-    return round((1 / x00) + (1 / x01) + (1 / x10) + (1 / x11), 2)
-
+'''
 def var_nu_e_d():
     return round((1 / x00) + (1 / x01) + (1 / x10) + (1 / x11), 2)
+'''
 
-def intervalle_confiance_d_e():
-    val_min = exp(nu_d_e() - 1.96*sqrt(var_nu_d_e()))
-    val_max = exp(nu_d_e() + 1.96*sqrt(var_nu_d_e()))
-    return [round(val_min, 2), round(val_max, 2)]
-
+'''
 def intervalle_confiance_e_d():
     val_min = exp(nu_e_d() - 1.96*sqrt(var_nu_e_d()))
     val_max = exp(nu_e_d() + 1.96*sqrt(var_nu_e_d()))
     return [round(val_min, 2), round(val_max, 2)]
 
 '''
+
+
+
 '''
 print("X0,0: ", x00, "\nX0,1: ", x01, "\nX1,0: ", x10, "\nX1,1: ", x11)
 print()
