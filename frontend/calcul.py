@@ -70,12 +70,12 @@ def test_hypothese_d_e(x11, x01, somme_n0, somme_n1, somme_m1, total):
     calcul = abs((r1(x11, somme_n1) - r0(x01, somme_n0)) / sqrt(var_r1_r0(r(somme_m1, total), somme_n0, somme_n1)))
     if calcul > 2.58:
         return "L'hypothèse de départ H0 est rejetée.\nE et D ne sont pas indépendant\nsur l'intervalle de confiance de " \
-               "95 et 98 %\n", calcul
+               "95 et 98 %\nValeur : ", round(calcul, 2)
     elif calcul > 1.96:
         return "L'hypothèse de départ H0 est rejetée.\nE et D ne sont pas indépendant\nsur l'intervalle de confiance de " \
-               "95 %\n", calcul
+               "95 %\nValeur : ", round(calcul, 2)
     else:
-        return "L'hypothèse de départ H0 n'est pas rejetée.\nE et D sont indépendants\n", calcul
+        return "L'hypothèse de départ H0 n'est pas rejetée.\nE et D sont indépendants\nValeur : ", round(calcul, 2)
 
 def nu_d_e(x00, x11, x10, x01):
     odd_ratio = odd_ratio_d_e(x00, x11, x10, x01)

@@ -93,7 +93,7 @@ for j, label in enumerate(label_col_sums):
 label_total = tk.Label(root, text='', fg='red', font=font.Font(size=12))
 label_total.grid(row=4, column=3)
 
-
+#Pour enquête de cohorte et transversale
 # Bouton pour récupérer les valeurs
 submit_button = tk.Button(root, text="Obtenir les valeurs", font=font.Font(size=12), bg='grey', border=3, relief=tk.GROOVE, command=get_values)
 submit_button.grid(row=10, columnspan=4)
@@ -124,7 +124,7 @@ r_entry.grid(row=19, columnspan=2)
 
 hypothese_label = tk.Label(root, text='Hypothèse :', font=font.Font(size=12), fg='black')
 hypothese_label.grid(row=20, columnspan=2)
-hypothese_entry = tk.Label(root, text='', font=font.Font(size=12), fg='black', wraplength=10)
+hypothese_entry = tk.Label(root, text=" ", font=font.Font(size=12), fg='black')
 hypothese_entry.grid(row=21, columnspan=2)
 
 nu_label = tk.Label(root, text='Nu', font=font.Font(size=12), fg='black')
@@ -141,5 +141,11 @@ intervalle_confiance_d_e_label = tk.Label(root, text='Intervalle de confiance (I
 intervalle_confiance_d_e_label.grid(row=26, columnspan=2)
 intervalle_confiance_d_e_entry = tk.Entry(root, font=font.Font(size=12))
 intervalle_confiance_d_e_entry.grid(row=27, columnspan=2)
+
+#Pour enquête cas témoins
+
+
+
+
 
 root.mainloop() # On démarre le programme
