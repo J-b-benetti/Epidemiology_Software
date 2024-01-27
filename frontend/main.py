@@ -27,26 +27,11 @@ def get_values():
     sum_m1 = backend.m1(values[0][1], values[1][1])
     total = backend.total(sum_n0, sum_n1)
 
-    r0_value = backend.r0(values[0][1], sum_n0)
-    r0_entry.delete(0, tk.END)
-    r0_entry.insert(0, r0_value)
-
-    r1_value = backend.r1(values[1][1], sum_n1)
-    r1_entry.delete(0, tk.END)
-    r1_entry.insert(0, r1_value)
-
-    odd_ratio_d_e_value = backend.odd_ratio_d_e(values[0][0], values[1][1], values[1][0], values[0][1])
-    odd_ratio_d_e_entry.delete(0, tk.END)
-    odd_ratio_d_e_entry.insert(0, odd_ratio_d_e_value)
-
-    r_value = backend.r(sum_m1, total)
-    r_entry.delete(0, tk.END)
-    r_entry.insert(0, r_value)
-
-    var_r1_r0_value = backend.var_r1_r0(r_value, sum_n0, sum_n1)
-    test_hyp_value = backend.test_hypothese_d_e(r0_value, r1_value, var_r1_r0_value)
-
-    hypothese_label['text'] = f"{test_hyp_value}"
+    update_entry(r0_entry, backend.r0(values[0][1], sum_rows[0]))
+    update_entry(r1_entry, backend.r1(values[1][1], sum_rows[1]))
+    update_entry(odd_ratio_d_e_entry, backend.odd_ratio_d_e(values[0][0], values[1][1], values[1][0], values[0][1]))
+    update_entry(r_entry, backend.r(backend.m1(values[0][1], sum_rows[0]), sum_rows[0]))
+    
 
     # Affichage des sommes des lignes et des colonnes dans les labels correspondants
     for i, sum_row in enumerate(sum_rows):
@@ -57,6 +42,10 @@ def get_values():
 
     label_total['text'] = f"{total}"
 
+
+def update_entry(entry_widget, value):
+    entry_widget.delete(0, tk.END)
+    entry_widget.insert(0, value)
 
 
 root = tk.Tk()
