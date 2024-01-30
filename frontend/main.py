@@ -36,7 +36,7 @@ def get_values():
 
     update_entry(nu_entry, backend.nu_d_e(values[0][0], values[1][1], values[1][0], values[0][1]))
     update_entry(var_nu_entry, backend.var_nu_d_e(values[0][0], values[0][1], values[1][0], values[1][1]))
-    update_entry(intervalle_confiance_d_e_entry, backend.intervalle_confiance_d_e(values[0][0], values[1][1], values[1][0], values[0][1]))
+    formatter_intervalle_confiance(intervalle_confiance_d_e_entry, backend.intervalle_confiance_d_e(values[0][0], values[1][1], values[1][0], values[0][1]))
 
     # Affichage des sommes des lignes et des colonnes dans les labels correspondants
     for i, sum_row in enumerate(sum_rows):
@@ -51,6 +51,11 @@ def get_values():
 def update_entry(entry_widget, value):
     entry_widget.delete(0, tk.END)
     entry_widget.insert(0, value)
+
+def formatter_intervalle_confiance(entry_widget, value):
+    formatted_value = "{:0<3} - {:0>3}".format(*map(lambda x: round(x, 2), value))
+    entry_widget.delete(0, tk.END)
+    entry_widget.insert(0, formatted_value)
 
 def update_label(label_widget, text):
     label_widget.config(text=text)
