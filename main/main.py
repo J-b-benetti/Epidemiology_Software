@@ -79,7 +79,7 @@ def update_label(label_widget, text):
 
 root = tk.Tk()
 root.title("Epidemiology Software")
-root.geometry("950x650")
+root.geometry("1000x650")
 root.resizable(False, True) # Redimensionnement de la fenêtre
 
 entry_fields = []   # Les entrées du tableau
@@ -88,37 +88,37 @@ entry_fields = []   # Les entrées du tableau
 column_labels = ['D=0', 'D=1']
 for j, col_label in enumerate(column_labels):
     label = tk.Label(root, text=col_label, font=font.Font(size=12))
-    label.grid(row=1, column=j+1)
+    label.grid(row=1, column=j+2)
 
 # Créer les étiquettes pour les lignes et les champs d'entrée pour le tableau 2x2
 row_labels = ['E=0', 'E=1']
 for i, row_label in enumerate(row_labels):
     label = tk.Label(root, text=row_label, font=font.Font(size=12))
-    label.grid(row=i+2, column=0)
+    label.grid(row=i+2, column=1)
 
     row = []
     for j in range(2):
         entry = tk.Entry(root, font=font.Font(size=12))
-        entry.grid(row=i+2, column=j+1)
+        entry.grid(row=i+2, column=j+2)
         row.append(entry)
     entry_fields.append(row)
 
 # Calcul des sommes
 label_row_sums = [tk.Label(root, text='', font=font.Font(size=12), fg='blue') for _ in range(2)]
 for i, label in enumerate(label_row_sums):
-    label.grid(row=i+2, column=3)
+    label.grid(row=i+2, column=4)
 
 label_col_sums = [tk.Label(root, text='', font=font.Font(size=12), fg='blue') for _ in range(2)]
 for j, label in enumerate(label_col_sums):
-    label.grid(row=4, column=j+1)
+    label.grid(row=4, column=j+2)
 
 label_total = tk.Label(root, text='', fg='red', font=font.Font(size=12))
-label_total.grid(row=4, column=3)
+label_total.grid(row=4, column=4)
 
 # Pour enquête de cohorte et transversale
 # Bouton pour récupérer les valeurs
 submit_button = tk.Button(root, text="Obtenir les valeurs", font=font.Font(size=12), bg='grey', border=3, relief=tk.GROOVE, command=get_values)
-submit_button.grid(row=10, columnspan=4)
+submit_button.grid(row=10, column=2)
 
 study_label = tk.Label(root, text="Cas d'une étude cohorte ou transversale", font=font.Font(size=12, weight="bold"), fg='black')
 study_label.grid(row=11, columnspan=2)
