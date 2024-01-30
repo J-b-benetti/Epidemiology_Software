@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import font
+from tkinter import messagebox
 import calcul as backend
 
 def get_values():
@@ -15,6 +16,9 @@ def get_values():
                 # Si l'entrée n'est pas un nombre entier, ajouter 0 par défaut
                 row.append(0)
         values.append(row)
+        if any(0 in row for row in values):
+            messagebox.showerror("Erreur", "Veuillez remplir toutes les cases avant d'exécuter le programme.")
+            return
 
     sum_rows = [sum(row) for row in values]
     sum_columns = [sum(col) for col in zip(*values)]  # Utilisation de zip pour obtenir les colonnes
@@ -164,7 +168,7 @@ intervalle_confiance_d_e_label.grid(row=26, columnspan=2)
 intervalle_confiance_d_e_entry = tk.Entry(root, font=font.Font(size=12))
 intervalle_confiance_d_e_entry.grid(row=27, columnspan=2)
 
-# Pour enquête cas témoins
+# Pour enquête CAS-Témoins
 
 study_label_2 = tk.Label(root, text="Cas d'une étude CAS-Témoins", font=font.Font(size=12, weight="bold"), fg='black')
 study_label_2.grid(row=11, column=10)
