@@ -15,7 +15,6 @@ def get_values():
                 # Si l'entrée n'est pas un nombre entier, ajouter 0 par défaut
                 row.append(0)
         values.append(row)
-    #print("Valeurs saisies :", values)
 
     sum_rows = [sum(row) for row in values]
     sum_columns = [sum(col) for col in zip(*values)]  # Utilisation de zip pour obtenir les colonnes
@@ -62,10 +61,10 @@ def update_label(label_widget, text):
 
 root = tk.Tk()
 root.title("Epidemiology Software")
-root.geometry("800x600")
-root.resizable(False, True) #Redimensionnement de la fenêtre
+root.geometry("950x650")
+root.resizable(False, True) # Redimensionnement de la fenêtre
 
-entry_fields = []
+entry_fields = []   # Les entrées du tableau
 
 # Créer les étiquettes pour les colonnes
 column_labels = ['D=0', 'D=1']
@@ -98,13 +97,14 @@ for j, label in enumerate(label_col_sums):
 label_total = tk.Label(root, text='', fg='red', font=font.Font(size=12))
 label_total.grid(row=4, column=3)
 
-#Pour enquête de cohorte et transversale
+# Pour enquête de cohorte et transversale
 # Bouton pour récupérer les valeurs
 submit_button = tk.Button(root, text="Obtenir les valeurs", font=font.Font(size=12), bg='grey', border=3, relief=tk.GROOVE, command=get_values)
 submit_button.grid(row=10, columnspan=4)
 
 study_label = tk.Label(root, text="Cas d'une étude cohorte ou transversale", font=font.Font(size=12, weight="bold"), fg='black')
 study_label.grid(row=11, columnspan=2)
+
 # R0
 r0_label = tk.Label(root, text='R0', font=font.Font(size=12), fg='black')
 r0_label.grid(row=12, columnspan=2)
@@ -117,16 +117,19 @@ r1_label.grid(row=14, columnspan=2)
 r1_entry = tk.Entry(root, font=font.Font(size=12))
 r1_entry.grid(row=15, columnspan=2)
 
+# OR D/E
 odd_ratio_d_e_label = tk.Label(root, text="Odd Ratio D/E", font=font.Font(size=12), fg='black')
 odd_ratio_d_e_label.grid(row=16, columnspan=2)
 odd_ratio_d_e_entry = tk.Entry(root, font=font.Font(size=12))
 odd_ratio_d_e_entry.grid(row=17, columnspan=2)
 
+# R
 r_label = tk.Label(root, text='R', font=font.Font(size=12), fg='black')
 r_label.grid(row=18, columnspan=2)
 r_entry = tk.Entry(root, font=font.Font(size=12))
 r_entry.grid(row=19, columnspan=2)
 
+# Vérification de l'indépendance
 hypothese_label = tk.Label(root, text='Hypothèse :', font=font.Font(size=12), fg='black')
 hypothese_label.grid(row=20, columnspan=2)
 hypothese_entry = tk.Label(root, text=" ", font=font.Font(size=12), fg='black')
@@ -147,10 +150,55 @@ intervalle_confiance_d_e_label.grid(row=26, columnspan=2)
 intervalle_confiance_d_e_entry = tk.Entry(root, font=font.Font(size=12))
 intervalle_confiance_d_e_entry.grid(row=27, columnspan=2)
 
-#Pour enquête cas témoins
+# Pour enquête cas témoins
 
+study_label_2 = tk.Label(root, text="Cas d'une étude CAS-Témoins", font=font.Font(size=12, weight="bold"), fg='black')
+study_label_2.grid(row=11, column=10)
 
+# F0
+f0_label = tk.Label(root, text='F0', font=font.Font(size=12), fg='black')
+f0_label.grid(row=12, column=10)
+f0_entry = tk.Entry(root, font=font.Font(size=12))
+f0_entry.grid(row=13, column=10)
 
+# F1
+f1_label = tk.Label(root, text='F1', font=font.Font(size=12), fg='black')
+f1_label.grid(row=14, column=10)
+f1_entry = tk.Entry(root, font=font.Font(size=12))
+f1_entry.grid(row=15, column=10)
+
+# OR E/D
+odd_ratio_e_d_label = tk.Label(root, text="Odd Ratio E/D", font=font.Font(size=12), fg='black')
+odd_ratio_e_d_label.grid(row=16, column=10)
+odd_ratio_e_d_entry = tk.Entry(root, font=font.Font(size=12))
+odd_ratio_e_d_entry.grid(row=17, column=10)
+
+# F
+f_label = tk.Label(root, text='F', font=font.Font(size=12), fg='black')
+f_label.grid(row=18, column=10)
+f_entry = tk.Entry(root, font=font.Font(size=12))
+f_entry.grid(row=19, column=10)
+
+# Vérification de l'indépendance
+hypothese_e_d_label = tk.Label(root, text='Hypothèse :', font=font.Font(size=12), fg='black')
+hypothese_e_d_label.grid(row=20, column=10)
+hypothese_e_d_entry = tk.Label(root, text=" ", font=font.Font(size=12), fg='black')
+hypothese_e_d_entry.grid(row=21, column=10)
+
+nu_e_d_label = tk.Label(root, text='Nu', font=font.Font(size=12), fg='black')
+nu_e_d_label.grid(row=22, column=10)
+nu_e_d_entry = tk.Entry(root, font=font.Font(size=12))
+nu_e_d_entry.grid(row=23, column=10)
+
+var_nu_e_d_label = tk.Label(root, text='Var_Nu', font=font.Font(size=12), fg='black')
+var_nu_e_d_label.grid(row=24, column=10)
+var_nu_e_d_entry = tk.Entry(root, font=font.Font(size=12))
+var_nu_e_d_entry.grid(row=25, column=10)
+
+intervalle_confiance_e_d_label = tk.Label(root, text='Intervalle de confiance (IC)', font=font.Font(size=12), fg='black')
+intervalle_confiance_e_d_label.grid(row=26, column=10)
+intervalle_confiance_e_d_entry = tk.Entry(root, font=font.Font(size=12))
+intervalle_confiance_e_d_entry.grid(row=27, column=10)
 
 
 root.mainloop() # On démarre le programme
