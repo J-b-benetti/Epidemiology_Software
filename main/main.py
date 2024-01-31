@@ -31,8 +31,8 @@ def get_values():
     total = backend.total(sum_n0, sum_n1)
 
     # Pour enquête de cohorte et transversale
-    update_entry(r0_entry, backend.r0(values[0][1], sum_rows[0]))
-    update_entry(r1_entry, backend.r1(values[1][1], sum_rows[1]))
+    update_entry(r0_entry, backend.r0(values[0][1], sum_n0))
+    update_entry(r1_entry, backend.r1(values[1][1], sum_n1))
     update_entry(odd_ratio_d_e_entry, backend.odd_ratio_d_e(values[0][0], values[1][1], values[1][0], values[0][1]))
     update_entry(r_entry, backend.r(backend.m1(values[0][1], values[1][1]), total))
 
@@ -43,8 +43,8 @@ def get_values():
     formatter_intervalle_confiance(intervalle_confiance_d_e_entry, backend.intervalle_confiance_d_e(values[0][0], values[1][1], values[1][0], values[0][1]))
 
     # Pour enquête CAS-Témoins
-    update_entry(f0_entry, backend.f0(values[1][0], sum_columns[0]))
-    update_entry(f1_entry, backend.f1(values[1][1], sum_columns[1]))
+    update_entry(f0_entry, backend.f0(values[1][0], sum_m0))
+    update_entry(f1_entry, backend.f1(values[1][1], sum_m1))
     update_entry(odd_ratio_e_d_entry, backend.odd_ratio_e_d(values[0][0], values[1][1], values[1][0], values[0][1]))
     update_entry(f_entry, backend.f(backend.n1(values[1][0], values[1][1]), total))
 
